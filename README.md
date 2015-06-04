@@ -1,7 +1,13 @@
-*Installation
+Installation
 
-    npm install -g grunt-cli
+    Install latest Ruby - rubyinstaller.org/downloads/
     
-    npm install
+    Command line:
     
-    run "grunt" on command line within the project root
+        gem install compass
+
+        npm install -g grunt-cli
+
+        npm install
+
+        run "grunt" on command line within the project root
