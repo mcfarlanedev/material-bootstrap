@@ -10795,5 +10795,14 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     margin-bottom: 5em;
   }
 }
+.top-banner {
+  background: #03a9f4;
+  height: 345px;
+  width: 100%;
+}
+
+.top-banner .card {
+  margin-top: 200px;
+}
 
 /*# sourceMappingURL=style.css.map */
