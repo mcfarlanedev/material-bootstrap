@@ -1,0 +1,13 @@
+{
+  "name": "simple-bower",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5",
+    "color-thief": "~2.0.1",
+    "imagesloaded": "~3.1.8",
+    "jasmine-core": "jasmine#~2.3.4",
+    "jquery": "~2.1.4",
+    "masonry": "~3.3.2",
+    "Materialize": "materialize#~0.97.2"
+  }
+}

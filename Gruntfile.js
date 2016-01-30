@@ -5,9 +5,9 @@
  * http://cribbb.com
  * @author Philip Brown
  */
- 
+
 'use strict';
- 
+
 /**
  * Grunt Module
  */
@@ -31,24 +31,16 @@ module.exports = function(grunt) {
          * Sass
          */
         sass: {
-          dev: {
             options: {
               style: 'expanded',
-              compass: true
+              compass: true,
+              sourceMap: false
             },
-            files: {
-              'css/style.css': '<%= project.css %>'
+            dist: {
+              files: {
+                'css/style.css': '<%= project.css %>'
+              }
             }
-          },
-          dist: {
-            options: {
-              style: 'compressed',
-              compass: true
-            },
-            files: {
-              'css/style.css': '<%= project.css %>'
-            }
-          }
         },
         /**
          * Watch
@@ -56,17 +48,96 @@ module.exports = function(grunt) {
         watch: {
           sass: {
             files: 'sass/*/*.{scss,sass}',
-            tasks: ['sass:dev']
+            tasks: ['sass']
+          }
+        },
+        copy: {
+            materialize: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'bower_components/Materialize/dist/js/',
+                        src: ['materialize.min.js'],
+                        dest: 'js/'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'bower_components/Materialize/sass/',
+                        src: ['components/*', 'materialize.scss'],
+                        dest: 'sass/materialize/'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'bower_components/Materialize/sass/components/date_picker/',
+                        src: ['*'],
+                        dest: 'sass/materialize/components/date_picker/'
+                    }
+                ]
+            },
+          jquery: {
+              files: [
+                  {
+                      expand: true,
+                      cwd: 'bower_components/jquery/dist/',
+                      src: ['jquery.min.js'],
+                      dest: 'js/'
+                  }
+              ]
+          },
+          imagesLoaded: {
+              files: [
+                  {
+                      expand: true,
+                      cwd: 'bower_components/imagesLoaded',
+                      src: ['imagesloaded.pkgd.min.js'],
+                      dest: 'js/'
+                  }
+              ]
+          },
+          colorthief: {
+              files: [
+                  {
+                      expand: true,
+                      cwd: 'bower_components/color-thief/dist',
+                      src: ['color-thief.min.js'],
+                      dest: 'js/'
+                  }
+              ]
+          },
+          masonry: {
+              files: [
+                  {
+                      expand: true,
+                      cwd: 'bower_components/masonry/dist/',
+                      src: ['masonry.pkgd.min.js'],
+                      dest: 'js/'
+                  }
+              ]
+          },
+          bootstrap: {
+            files: [
+                {
+                    expand: true,
+                    cwd: 'bower_components/bootstrap-sass/assets/stylesheets/',
+                    src: ['bootstrap/*', '!bootstrap/_bootstrap.scss'],
+                    dest: 'sass/bootstrap/'
+                },
+                {
+                    expand: true,
+                    cwd: 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins/',
+                    src: ['*'],
+                    dest: 'sass/bootstrap/bootstrap/mixins/'
+                }
+            ]
           }
         }
     });
-    
     /**
  * Default task
  * Run `grunt` on the command line
  */
 grunt.registerTask('default', [
-  'sass:dev',
+  'sass',
   'watch'
-]);
+  ]);
 };
